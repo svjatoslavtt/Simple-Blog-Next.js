@@ -7,10 +7,7 @@ import { postsReducer, PostsState } from './posts/reducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
-  postsReducer,
-  applyMiddleware(sagaMiddleware),
-);
+const store = createStore(postsReducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(rootSaga);
 

@@ -8,7 +8,8 @@ const postsState = (state: PostsState) => state;
 
 export const getPosts = createSelector(
 	postsState,
-	(state: PostsState) => state.posts && state.posts.sort((a: Post, b: Post) => b.id - a.id)
+	(state: PostsState) =>
+		state.posts && state.posts.sort((a: Post, b: Post) => b.id - a.id)
 );
 
 export const getCurrentPost = createSelector(
@@ -18,5 +19,7 @@ export const getCurrentPost = createSelector(
 
 export const getComments = createSelector(
 	postsState,
-	(state: PostsState) => state.comments && state.comments.sort((a: Comment, b: Comment) => Number(b.id) - Number(a.id))
+	(state: PostsState) =>
+		state.comments &&
+		state.comments.sort((a: Comment, b: Comment) => Number(b.id) - Number(a.id))
 );
