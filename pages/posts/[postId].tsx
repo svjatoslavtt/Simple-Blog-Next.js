@@ -1,22 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-
-import {
-  ActionButtons,
-  Body,
-  Button,
-  ButtonsWrapper,
-  Comment,
-  CommentBody,
-  CommentId,
-  CommentWrapper,
-  Container,
-  PostId,
-  PostWrapper,
-  Title,
-  TitleWrapper,
-} from './styled-components';
+import styled from 'styled-components';
 
 import { Comment as CommentTypes } from '../../types/post.types';
 import { PostTypes } from '../../components/Post';
@@ -24,6 +9,84 @@ import { Actions } from '../../redux/posts/actions';
 import { getComments, getCurrentPost } from '../../redux/posts/selectors';
 import CommentForm from '../../components/CommentForm';
 import ChangePost from '../../components/ChangePost';
+
+const Container = styled.section`
+  width: 100%;
+  margin-bottom: 100px;
+`;
+
+const PostWrapper = styled.section`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+`;
+
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 15px;
+`;
+
+const Title = styled.div`
+  font-size: 24px;
+`;
+
+const Body = styled.div`
+  fonst-size: 16px;
+`;
+
+const PostId = styled.div`
+  font-size: 20px;
+`;
+
+const CommentWrapper = styled.section`
+  width: 100%;
+`;
+
+const Comment = styled.section`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+`;
+
+const CommentId = styled.div`
+  font-size: 16px;
+`;
+
+const CommentBody = styled.div`
+  font-size: 15px;
+`;
+
+const Button = styled.button`
+  height: 40px;
+  margin-right: 5px;
+  padding: 0 30px;
+  background-color: #454545;
+  color: #f7f7f7;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background-color: #5a5a5a;
+  }
+`;
+
+const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 50px;
+`;
+
+const ActionButtons = styled.div`
+  display: flex;
+`;
 
 const Post: React.FC<PostTypes> = () => {
   const dispatch = useDispatch();

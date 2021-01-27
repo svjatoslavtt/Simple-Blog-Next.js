@@ -21,15 +21,10 @@ const GlobalStyle = createGlobalStyle`
 
 class WrappedApp extends App<AppInitialProps> {
   public static getInitialProps = async ({ Component, ctx }: AppContext) => {
-    const pageProps = {
-      ...(Component.getInitialProps
-        ? await Component.getInitialProps(ctx)
-        : {}),
-    };
+    let pageProps = {};
 
-    if (ctx.req) {
-      ctx.store.dispatch(END);
-      await (ctx.store as any).sagaTask.toPromise();
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
     }
 
     return {
