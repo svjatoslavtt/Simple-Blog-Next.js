@@ -96,21 +96,4 @@ const Post: React.FC<PostTypes> = () => {
   );
 };
 
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       { params: { postId: '[postId]' } }
-//     ],
-//     fallback: true
-//   };
-// }
-
-// export const getStaticProps = wrapper.getStaticProps(
-// 	async ({ store }) => {
-// 		store.dispatch(Actions.getCurrentPostRequest({ postId: 1 }));
-// 		store.dispatch(END);
-//     await (store as any).sagaTask.toPromise();
-// 	}
-// );
-
 export default Post;
