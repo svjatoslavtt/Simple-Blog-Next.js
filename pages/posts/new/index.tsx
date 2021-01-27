@@ -6,16 +6,14 @@ import { Actions } from '../../../redux/posts/actions';
 import { FormDataTypes } from '../../../components/PostForm';
 
 const AddPost: React.FC = () => {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const handleSubmit = (event: FormEvent, params: FormDataTypes) => {
-		event.preventDefault();
-		dispatch(Actions.addNewBlogRequest(params));
-	};
+  const handleSubmit = (event: FormEvent, params: FormDataTypes) => {
+    event.preventDefault();
+    dispatch(Actions.addNewBlogRequest(params));
+  };
 
-	return (
-		<PostForm handleSubmit={handleSubmit} />
-	);
+  return <PostForm handleSubmit={handleSubmit} />;
 };
 
 export default AddPost;

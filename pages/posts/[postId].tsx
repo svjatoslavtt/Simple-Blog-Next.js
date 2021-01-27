@@ -11,144 +11,154 @@ import CommentForm from '../../components/CommentForm';
 import ChangePost from '../../components/ChangePost';
 
 const Container = styled.section`
-	width: 100%;
-	margin-bottom: 100px;
+  width: 100%;
+  margin-bottom: 100px;
 `;
 
 const PostWrapper = styled.section`
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
 `;
 
 const TitleWrapper = styled.div`
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	width: 100%;
-	margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 15px;
 `;
 
 const Title = styled.div`
-	font-size: 24px;
+  font-size: 24px;
 `;
 
 const Body = styled.div`
-	fonst-size: 16px;
+  fonst-size: 16px;
 `;
 
 const PostId = styled.div`
-	font-size: 20px;
+  font-size: 20px;
 `;
 
 const CommentWrapper = styled.section`
-	width: 100%;
+  width: 100%;
 `;
 
 const Comment = styled.section`
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
 `;
 
 const CommentId = styled.div`
-	font-size: 16px;
+  font-size: 16px;
 `;
 
 const CommentBody = styled.div`
-	font-size: 15px;
-`; 
+  font-size: 15px;
+`;
 
 const Button = styled.button`
-	height: 40px;
-	margin-right: 5px;
-	padding: 0 30px;
-	background-color: #454545;
-	color: #f7f7f7;
-	font-size: 15px;
-	border-radius: 5px;
-	border: none;
-	cursor: pointer;
-	outline: none;
-	transition: all .1s ease-in-out;
+  height: 40px;
+  margin-right: 5px;
+  padding: 0 30px;
+  background-color: #454545;
+  color: #f7f7f7;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.1s ease-in-out;
 
-	&:hover {
-		background-color: #5a5a5a;
-	}
+  &:hover {
+    background-color: #5a5a5a;
+  }
 `;
 
 const ButtonsWrapper = styled.div`
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 50px;
 `;
 
 const ActionButtons = styled.div`
-	display: flex;
+  display: flex;
 `;
 
 const Post: React.FC<PostTypes> = () => {
-	const dispatch = useDispatch();
-	const router = useRouter();
-	const [isShowCommentForm, setIsShowCommentForm] = useState<boolean>(false);
-	const [isChangePost, setIsChangePost] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const [isShowCommentForm, setIsShowCommentForm] = useState<boolean>(false);
+  const [isChangePost, setIsChangePost] = useState<boolean>(false);
 
-	const post = useSelector(getCurrentPost);
-	const comments = useSelector(getComments);
-	const currentComments = comments && comments.length && comments.filter((item: CommentTypes) => item.postId === Number(router.query.postId));
-	
-	useEffect(() => {
-		dispatch(Actions.getCurrentPostRequest({ postId: Number(router.query.postId) }))
-	}, []);
+  const post = useSelector(getCurrentPost);
+  const comments = useSelector(getComments);
 
-	const handleDeletePost = () => {
-		dispatch(Actions.deletePostRequest({ router, postId: Number(router.query.postId)}));
-	};
-	
-	return (
-		<Container>
-			<PostWrapper>
-				<TitleWrapper>
-					<Title>
-						{post && post.title}
-					</Title>
+  let asdas = 'asdasd';
 
-					<PostId>
-						#{post && post.id}
-					</PostId>
-				</TitleWrapper>
+  const currentComments =
+    comments &&
+    comments.length &&
+    comments.filter(
+      (item: CommentTypes) => item.postId === Number(router.query.postId)
+    );
 
-				<Body>
-					{post && post.body}
-				</Body>
-			</PostWrapper>
+  useEffect(() => {
+    dispatch(
+      Actions.getCurrentPostRequest({ postId: Number(router.query.postId) })
+    );
+  }, []);
 
-			<ButtonsWrapper>
-				<Button onClick={setIsShowCommentForm.bind(null, true)}>Add comment</Button>
+  const handleDeletePost = () => {
+    dispatch(
+      Actions.deletePostRequest({ router, postId: Number(router.query.postId) })
+    );
+  };
 
-				<ActionButtons>
-					<Button onClick={setIsChangePost.bind(null, true)}>Change</Button>
-					<Button onClick={handleDeletePost}>Delete</Button>
-				</ActionButtons>
-			</ButtonsWrapper>
+  return (
+    <Container>
+      <PostWrapper>
+        <TitleWrapper>
+          <Title>{post && post.title}</Title>
 
-			{isShowCommentForm && <CommentForm setIsShowCommentForm={setIsShowCommentForm} />}
+          <PostId>#{post && post.id}</PostId>
+        </TitleWrapper>
 
-			{currentComments && currentComments.length ? (
-				<CommentWrapper>
-					{currentComments.map((item: CommentTypes) => (
-						<Comment key={item.id}>
-							<CommentId>Comment #{item.id}</CommentId>
-							<CommentBody>{item.body}</CommentBody>
-						</Comment>
-					))}
-				</CommentWrapper>
-			) : null}
+        <Body>{post && post.body}</Body>
+      </PostWrapper>
 
-			{isChangePost && <ChangePost setIsChangePost={setIsChangePost} />}
-		</Container>
-	);
+      <ButtonsWrapper>
+        <Button onClick={setIsShowCommentForm.bind(null, true)}>
+          Add comment
+        </Button>
+
+        <ActionButtons>
+          <Button onClick={setIsChangePost.bind(null, true)}>Change</Button>
+          <Button onClick={handleDeletePost}>Delete</Button>
+        </ActionButtons>
+      </ButtonsWrapper>
+
+      {isShowCommentForm && (
+        <CommentForm setIsShowCommentForm={setIsShowCommentForm} />
+      )}
+
+      {currentComments && currentComments.length ? (
+        <CommentWrapper>
+          {currentComments.map((item: CommentTypes) => (
+            <Comment key={item.id}>
+              <CommentId>Comment #{item.id}</CommentId>
+              <CommentBody>{item.body}</CommentBody>
+            </Comment>
+          ))}
+        </CommentWrapper>
+      ) : null}
+
+      {isChangePost && <ChangePost setIsChangePost={setIsChangePost} />}
+    </Container>
+  );
 };
 
 // export async function getStaticPaths() {
