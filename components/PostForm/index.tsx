@@ -1,6 +1,7 @@
 import { NextRouter, useRouter } from 'next/router';
 import { FormEvent, useState } from 'react';
 import styled from 'styled-components';
+
 import { Post } from '../../types/post.types';
 
 const FormWrapper = styled.form`

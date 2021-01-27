@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+
 import { Actions } from '../../redux/posts/actions';
 
 const FormWrapper = styled.form`

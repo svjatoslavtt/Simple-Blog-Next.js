@@ -1,5 +1,6 @@
 import { NextRouter } from 'next/router';
 import { action, ActionType } from 'typesafe-actions';
+
 import { Post } from '../../types/post.types';
 
 export enum ActionTypes {

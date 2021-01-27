@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 import { Comment as CommentTypes } from '../../types/post.types';
-import { PostTypes } from "../../components/Post";
+import { PostTypes } from '../../components/Post';
 import { Actions } from '../../redux/posts/actions';
 import { getComments, getCurrentPost } from '../../redux/posts/selectors';
 import CommentForm from '../../components/CommentForm';

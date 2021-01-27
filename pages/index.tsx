@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useSelector } from "react-redux";
 import { END } from 'redux-saga';
 
-import {PostTypes} from '../components/Post';
+import { PostTypes } from '../components/Post';
 import PostPreview from '../components/Post';
 import { Actions } from '../redux/posts/actions';
 import { getPosts } from '../redux/posts/selectors';
