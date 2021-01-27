@@ -1,7 +1,7 @@
 import { FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import PostForm from '../../../components/PostForm';
 
+import PostForm from '../../../components/PostForm';
 import { Actions } from '../../../redux/posts/actions';
 import { FormDataTypes } from '../../../components/PostForm';
 
