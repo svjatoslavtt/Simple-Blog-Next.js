@@ -97,8 +97,6 @@ const Post: React.FC<PostTypes> = () => {
   const post = useSelector(getCurrentPost);
   const comments = useSelector(getComments);
 
-  let asdas = 'asdasd';
-
   const currentComments =
     comments &&
     comments.length &&
