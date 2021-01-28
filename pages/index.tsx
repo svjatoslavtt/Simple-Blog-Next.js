@@ -45,10 +45,12 @@ const Blog: NextPage<BlogTypes> = () => {
   );
 };
 
-export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
-  store.dispatch(Actions.getPostsRequest());
-  store.dispatch(END);
-  await (store as any).sagaTask.toPromise();
-});
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ store }) => {
+    store.dispatch(Actions.getPostsRequest());
+    store.dispatch(END);
+    await (store as any).sagaTask.toPromise();
+  }
+);
 
 export default Blog;
