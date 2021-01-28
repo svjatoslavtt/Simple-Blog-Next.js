@@ -39,12 +39,13 @@ const PostId = styled.div`
 const Detail = styled.button`
   padding: 10px 15px;
   font-size: 15px;
-  border: 1px solid #454545;
+  border: 1px dashed #454545;
   border-radius: 3px;
   color: #454545;
   background-color: transparent;
   cursor: pointer;
   transition: all 0.125s ease-in-out;
+  outline: none;
 
   &:hover {
     background-color: #454545;
