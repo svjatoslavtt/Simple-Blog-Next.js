@@ -9,16 +9,11 @@ const Container = styled.div`
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   padding: 20px;
-  cursor: pointer;
   -webkit-box-shadow: 0px 1px 7px -5px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 1px 7px -5px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 1px 7px -5px rgba(0, 0, 0, 0.75);
   transition: all 0.125s ease-in-out;
   box-sizing: border-box;
-
-  &:hover {
-    background: #f3f3f3;
-  }
 `;
 
 const TitleWrapper = styled.div`
@@ -34,17 +29,27 @@ const Title = styled.div`
 `;
 
 const Body = styled.div`
-  fonst-size: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 `;
 
 const PostId = styled.div`
   font-size: 14px;
 `;
 
-const Detail = styled.a`
+const Detail = styled.button`
+  padding: 10px 15px;
   font-size: 15px;
-  color: #385eb5;
+  border: 1px solid #454545;
+  border-radius: 3px;
+  color: #454545;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.125s ease-in-out;
+
+  &:hover {
+    background-color: #454545;
+    color: #f7f7f7;
+  }
 `;
 
 export type PostTypes = {
@@ -53,7 +58,11 @@ export type PostTypes = {
   body: string;
 };
 
-const PostPreview: React.FC<PostTypes> = ({ id, title, body }) => {
+const PostPreview: React.FC<PostTypes> = ({
+  id,
+  title = 'title',
+  body = 'body',
+}) => {
   return (
     <Container>
       <TitleWrapper>
