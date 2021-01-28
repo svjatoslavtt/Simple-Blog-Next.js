@@ -72,11 +72,11 @@ const ChangePost: React.FC<ChangePostTypes> = ({ setIsChangePost }) => {
       body: currentPost.body,
     };
 
-    const isFieldsMatch = Object.keys(currentPostData).some(
+    const isFieldsDontMatch = Object.keys(currentPostData).some(
       (item: string) => currentPostData[item] !== rest[item]
     );
 
-    if (isFieldsMatch) {
+    if (isFieldsDontMatch) {
       dispatch(Actions.updatePostRequest({ ...rest, id: currentPost.id }));
     }
 
