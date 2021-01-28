@@ -120,12 +120,12 @@ const Post: React.FC<PostTypes> = () => {
     <Container>
       <PostWrapper>
         <TitleWrapper>
-          <Title>{post && post.title}</Title>
+          <Title>{(post && post.title) ?? 'Title'}</Title>
 
           <PostId>#{post && post.id}</PostId>
         </TitleWrapper>
 
-        <Body>{post && post.body}</Body>
+        <Body>{(post && post.body) ?? 'Body'}</Body>
       </PostWrapper>
 
       <ButtonsWrapper>
