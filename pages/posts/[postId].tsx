@@ -129,8 +129,8 @@ const Post: React.FC<PostTypes> = () => {
       </PostWrapper>
 
       <ButtonsWrapper>
-        <Button onClick={setIsShowCommentForm.bind(null, true)}>
-          Add comment
+        <Button onClick={setIsShowCommentForm.bind(null, !isShowCommentForm)}>
+          {!isShowCommentForm ? 'Add comment' : 'Close the form'}
         </Button>
 
         <ActionButtons>
