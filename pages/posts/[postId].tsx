@@ -97,12 +97,7 @@ const Post: React.FC<PostTypes> = () => {
   const post = useSelector(getCurrentPost);
   const comments = useSelector(getComments);
 
-  const currentComments =
-    comments &&
-    comments.length &&
-    comments.filter(
-      (item: CommentTypes) => item.postId === Number(router.query.postId)
-    );
+  const currentComments = comments && comments.length && comments;
 
   useEffect(() => {
     dispatch(
